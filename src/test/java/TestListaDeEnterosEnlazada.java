@@ -40,21 +40,27 @@ public class TestListaDeEnterosEnlazada {
         java.io.ByteArrayOutputStream out = new java.io.ByteArrayOutputStream();
         System.setOut(new java.io.PrintStream(out));
 
-        // Método recursivo usando la API existente
-        imprimirInversoRec(lista, 1);
+        // Método recursivo usando comenzar/proximo/fin
+        imprimirInversoRec(lista);
 
         System.setOut(System.out); // Restauramos salida estándar
 
         String resultado = out.toString().trim();
         assertEquals("5 4 3 2 1", resultado);
-        imprimirInversoRec(lista, 1);
+        imprimirInversoRec(lista);
     }
 
-    // Método recursivo auxiliar dentro del test
-    private void imprimirInversoRec(ListaDeEnteros lista, int pos) {
-        if (pos > lista.tamanio())
+    // Método recursivo auxiliar dentro del test usando proximo()
+    private void imprimirInversoRec(ListaDeEnteros lista) {
+        lista.comenzar();
+        imprimirInversoRecAux(lista);
+    }
+
+    private void imprimirInversoRecAux(ListaDeEnteros lista) {
+        if (lista.fin())
             return;
-        imprimirInversoRec(lista, pos + 1);
-        System.out.print(lista.elemento(pos) + " ");
+        Integer v = lista.proximo();
+        imprimirInversoRecAux(lista);
+        System.out.print(v + " ");
     }
 }
