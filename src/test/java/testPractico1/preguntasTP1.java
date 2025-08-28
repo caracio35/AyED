@@ -1,3 +1,5 @@
+package testPractico1;
+
 public @interface preguntasTP1 {
     /*
      * Estructura interna:

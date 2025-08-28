@@ -11,17 +11,19 @@ public class PilaGenerica<T> {
     }
 
     public void apilar(T elem) {
-        datos.agregarInicio(elem);
+        datos.agregarFinal(elem);
     }
 
     public T desapilar() {
-        T elem = this.tope();
-        datos.eliminarEn(0);
+        int tam = datos.tamanio();
+        T elem = datos.elemento(tam);
+        datos.eliminarEn(tam);
         return elem;
     }
 
     public T tope() {
-        return datos.elemento(0);
+        int tam = datos.tamanio();
+        return datos.elemento(tam);
     }
 
     public boolean esVacia() {
