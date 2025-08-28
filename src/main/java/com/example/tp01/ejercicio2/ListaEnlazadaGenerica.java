@@ -210,4 +210,15 @@ public class ListaEnlazadaGenerica<T> extends ListaGenerica<T> {
 		return nueva;
 	}
 
+	@Override
+	public boolean agregar(T elem[]) {
+		if (elem == null) {
+			return false;
+		}
+		for (T elemento : elem) {
+			agregarFinal(elemento);
+		}
+		return true;
+	}
+
 }

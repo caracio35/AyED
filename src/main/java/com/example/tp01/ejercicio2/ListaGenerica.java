@@ -118,5 +118,8 @@ public abstract class ListaGenerica<T> {
 	 * Devuelve una lista sin elementos.
 	 **/
 	// public abstract void limpiar();
+	public abstract boolean agregar(T elem[]);
+	// agrega una arreglo uno por uno de los elementos y retorna true o false si
+	// logro agregarlos a todos
 
 }

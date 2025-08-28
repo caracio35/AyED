@@ -21,7 +21,7 @@ public class TestListaDeEnterosConArreglos {
         }
 
         // Verificamos tamaño
-        assertEquals(numeros.length, lista.tamanio());
+        assertEquals(5, lista.tamanio());
 
         // Verificamos cada posición con elemento(i)
         // Usar posiciones desde 1
