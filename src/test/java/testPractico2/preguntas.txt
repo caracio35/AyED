@@ -1,0 +1,48 @@
+2.
+a) ¿Qué recorridos conoce para recorrer en profundidad un árbol general? Explique brevemente
+respondemos para un ejemplo raiz:A hijo izquierdo:B hijo derecho:C
+solo en arbboles binarios
+PREORDEN: se procesa primero la raiz luego se recorren recursivamente los sub-arbooles desde primero hasta el ultimo
+salida A-B-C
+public void preorden() {
+    imprimir(dato);
+    if (tieneHijoIzquierdo)
+        hijoIzquierdo.preorden();
+    if (tieneHijoDerecho)
+        hijoDerecho.preorden();
+}
+salida A-B-C
+    
+INORDEN:se recorren primero todos los sub-arboles izquierdo recien al fianal se procesa la raiz
+public void inorden() {
+    if (tieneHijoIzquierdo)
+        hijoIzquierdo.inorden();
+    imprimir(dato);
+    if (tieneHijoDerecho)
+        hijoDerecho.inorden();
+}
+salida B-A-C
+
+POSORDEN: se procesa primero tosos los sub-arboles luego la raiz  
+public void posorden() {
+    if (tieneHijoIzquierdo)
+        hijoIzquierdo.posorden();
+    if (tieneHijoDerecho)
+        hijoDerecho.posorden();
+    imprimir(dato);
+}
+salida B-C-A
+generales solo por niveles 
+
+b) ¿Qué recorridos conoce para recorrer por niveles un árbol general? Explique brevemente.
+
+
+
+c) ¿Existe alguna diferencia entre los recorridos preorden, postorden, inorden para recorrer los árboles generales respecto de los árboles binarios? Justifique su respuesta.
+
+
+d) ¿Existe alguna noción de orden entre los elementos de un árbol general? Justifique su respuesta.
+
+
+e) En un árbol general se define el grado de un nodo como el número de hijos de ese nodo y el grado del árbol como el máximo de los grados de los nodos del árbol.
+¿Qué relación encuentra entre los Árboles Binarios sin tener en cuenta la implementación? Justifique su respuesta.
