@@ -23,7 +23,7 @@ c) ¿Existe alguna diferencia entre los recorridos preorden, postorden, inorden 
 Sí, existen diferencias, principalmente en el recorrido inorden.
 **PREORDEN y POSORDEN Estos recorridos son aplicables tanto a árboles generales como a binarios sin mayores diferencias conceptuales.
     **PREORDEN: Se visita primero la raíz y luego se recorren los hijos (o subárboles) de izquierda a derecha.
-    POSORDEN: Se recorren primero los hijos (o subárboles) de izquierda a derecha y luego se visita la raíz.
+    **POSORDEN: Se recorren primero los hijos (o subárboles) de izquierda a derecha y luego se visita la raíz.
 **INORDEN: La diferencia crucial radica en el recorrido inorden. Este recorrido está definido específicamente para árboles binarios, donde un nodo tiene un hijo izquierdo y uno derecho. La secuencia es: visitar el subárbol izquierdo, luego la raíz, y finalmente el subárbol derecho. En un *árbol general*, un nodo puede tener múltiples hijos, por lo que no existe una noción inherente de "hijo izquierdo" y "hijo derecho", lo que hace que el concepto de recorrido inorden no sea directamente aplicable
 
 d) ¿Existe alguna noción de orden entre los elementos de un árbol general? Justifique su respuesta.
