@@ -35,11 +35,22 @@ salida B-C-A
 generales solo por niveles 
 
 b) ¿Qué recorridos conoce para recorrer por niveles un árbol general? Explique brevemente.
+El recorrido por niveles de un árbol general visita todos los nodos de un mismo nivel antes de pasar al siguiente nivel. En otras palabras, se recorre el árbol horizontalmente, de arriba abajo, nivel por nivel. Este tipo de recorrido utiliza una cola (queue) para almacenar los nodos a visitar, lo que le permite procesar los nodos en el orden en que se encuentran en cada nivel.
 
+Encolar (enqueue) la raíz del árbol en la cola.
+
+Mientras la cola no esté vacía:
+a.  Desencolar (dequeue) un nodo.
+b.  Procesar el nodo (por ejemplo, imprimir su valor o realizar alguna operación).
+c.  Encolar todos los hijos del nodo desencolado.
 
 
 c) ¿Existe alguna diferencia entre los recorridos preorden, postorden, inorden para recorrer los árboles generales respecto de los árboles binarios? Justifique su respuesta.
-
+Sí, existen diferencias, principalmente en el recorrido inorden.
+**PREORDEN y POSORDEN Estos recorridos son aplicables tanto a árboles generales como a binarios sin mayores diferencias conceptuales.
+    **PREORDEN: Se visita primero la raíz y luego se recorren los hijos (o subárboles) de izquierda a derecha.
+    POSORDEN: Se recorren primero los hijos (o subárboles) de izquierda a derecha y luego se visita la raíz.
+**INORDEN: La diferencia crucial radica en el recorrido inorden. Este recorrido está definido específicamente para árboles binarios, donde un nodo tiene un hijo izquierdo y uno derecho. La secuencia es: visitar el subárbol izquierdo, luego la raíz, y finalmente el subárbol derecho. En un *árbol general*, un nodo puede tener múltiples hijos, por lo que no existe una noción inherente de "hijo izquierdo" y "hijo derecho", lo que hace que el concepto de recorrido inorden no sea directamente aplicable
 
 d) ¿Existe alguna noción de orden entre los elementos de un árbol general? Justifique su respuesta.
 
