@@ -1,7 +1,7 @@
-package com.example.tp01.ejercicio3;
+package com.example.tp01_list.ejercicio3;
 
-import com.example.tp01.ejercicio2.ListaEnlazadaGenerica;
-import com.example.tp01.ejercicio2.ListaGenerica;
+import com.example.tp01_list.ejercicio2.ListaEnlazadaGenerica;
+import com.example.tp01_list.ejercicio2.ListaGenerica;
 
 public class ColaGenerica<T> {
 

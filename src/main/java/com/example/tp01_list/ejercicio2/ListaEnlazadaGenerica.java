@@ -1,4 +1,4 @@
-package com.example.tp01.ejercicio2;
+package com.example.tp01_list.ejercicio2;
 
 /**
  * La clase ListaGenericaEnlazada es una ListaGenerica, donde los elementos de

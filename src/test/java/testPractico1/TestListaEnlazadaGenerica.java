@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import com.example.tp01.ejercicio2.ListaEnlazadaGenerica;
-import com.example.tp01.ejercicio2.ListaGenerica;
-import com.example.tp01.objetos.Estudiante;
+import com.example.tp01_list.ejercicio2.ListaEnlazadaGenerica;
+import com.example.tp01_list.ejercicio2.ListaGenerica;
+import com.example.tp01_list.objetos.Estudiante;
 
 public class TestListaEnlazadaGenerica {
     @Test

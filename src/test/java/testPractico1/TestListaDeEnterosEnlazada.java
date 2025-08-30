@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import com.example.tp01.ejercicio1.ListaDeEnteros;
-import com.example.tp01.ejercicio1.ListaDeEnterosEnlazada;
+import com.example.tp01_list.ejercicio1.ListaDeEnteros;
+import com.example.tp01_list.ejercicio1.ListaDeEnterosEnlazada;
 
 public class TestListaDeEnterosEnlazada {
 

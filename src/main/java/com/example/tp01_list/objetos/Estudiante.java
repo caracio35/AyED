@@ -1,4 +1,4 @@
-package com.example.tp01.objetos;
+package com.example.tp01_list.objetos;
 
 public class Estudiante {
     private String nombre;

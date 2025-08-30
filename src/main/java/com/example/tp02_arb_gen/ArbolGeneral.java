@@ -1,7 +1,7 @@
-package com.example.tp02_ag.tp02_ag.tp02;
+package com.example.tp02_arb_gen;
 
-import com.example.tp01.ejercicio2.ListaEnlazadaGenerica;
-import com.example.tp01.ejercicio2.ListaGenerica;
+import com.example.tp01_list.ejercicio2.ListaEnlazadaGenerica;
+import com.example.tp01_list.ejercicio2.ListaGenerica;
 
 public class ArbolGeneral<T> {
 

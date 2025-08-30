@@ -1,7 +1,7 @@
 package com.example;
 
-import com.example.tp01.ejercicio1.ListaDeEnteros;
-import com.example.tp01.ejercicio1.ListaDeEnterosEnlazada;
+import com.example.tp01_list.ejercicio1.ListaDeEnteros;
+import com.example.tp01_list.ejercicio1.ListaDeEnterosEnlazada;
 
 public class Main {
     public static void main(String[] args) {

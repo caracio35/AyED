@@ -1,4 +1,4 @@
-package com.example.tp01.ejercicio1;
+package com.example.tp01_list.ejercicio1;
 
 public class ListaDeEnterosEnlazada extends ListaDeEnteros {
 	private NodoEntero inicio;

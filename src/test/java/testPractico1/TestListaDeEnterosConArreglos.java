@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import com.example.tp01.ejercicio1.ListaDeEnteros;
-import com.example.tp01.ejercicio1.ListaDeEnterosConArreglos;
+import com.example.tp01_list.ejercicio1.ListaDeEnteros;
+import com.example.tp01_list.ejercicio1.ListaDeEnterosConArreglos;
 
 public class TestListaDeEnterosConArreglos {
 

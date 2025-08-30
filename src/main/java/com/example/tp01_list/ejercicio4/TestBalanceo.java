@@ -1,6 +1,6 @@
-package com.example.tp01.ejercicio4;
+package com.example.tp01_list.ejercicio4;
 
-import com.example.tp01.ejercicio3.PilaGenerica;
+import com.example.tp01_list.ejercicio3.PilaGenerica;
 
 /**
  * Clase para verificar si un String de caracteres (), [], {} está balanceado.

@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import com.example.tp01.ejercicio3.ColaGenerica;
-import com.example.tp01.ejercicio3.PilaGenerica;
-import com.example.tp01.ejercicio4.TestBalanceo;
+import com.example.tp01_list.ejercicio3.ColaGenerica;
+import com.example.tp01_list.ejercicio3.PilaGenerica;
+import com.example.tp01_list.ejercicio4.TestBalanceo;
 
 public class TestPilaYColaGenerica {
     @Test
