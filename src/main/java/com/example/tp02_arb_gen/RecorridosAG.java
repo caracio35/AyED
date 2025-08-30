@@ -38,7 +38,27 @@ public class RecorridosAG {
          * Método que retorna una lista con los elementos impares del árbol “a” que sean
          * mayores al valor “n” pasados como parámetros, recorrido en inorden.
          */
-        return null;
+        // solo se podria en arboles de grado dos (pseudo AB)saliendo de ahi no se
+        // podria
+        ListaGenerica<Integer> lista = new ListaEnlazadaGenerica();
+        if (a != null) {
+            if (a.getDato() % 2 != 0 && a.getDato() > n) {
+                lista.agregarFinal(a.getDato());
+            }
+            if (a.tieneHijos()) {
+                ListaGenerica<ArbolGeneral<Integer>> hijos = a.getHijos();
+                hijos.comenzar();
+                while (!hijos.fin()) {
+                    ListaGenerica<Integer> listaHijo = numerosImparesMayoresQueInOrden(hijos.proximo(), n);
+                    listaHijo.comenzar();
+                    while (!listaHijo.fin()) {
+                        lista.agregarFinal(listaHijo.proximo());
+                    }
+                }
+            }
+        }
+
+        return lista;
     }
 
     public ListaGenerica<Integer> numerosImparesMayoresQuePostOrden(ArbolGeneral<Integer> a, Integer n) {
