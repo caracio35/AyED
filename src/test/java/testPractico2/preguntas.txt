@@ -1,38 +1,13 @@
 2.
 a) ¿Qué recorridos conoce para recorrer en profundidad un árbol general? Explique brevemente
-respondemos para un ejemplo raiz:A hijo izquierdo:B hijo derecho:C
-solo en arbboles binarios
-PREORDEN: se procesa primero la raiz luego se recorren recursivamente los sub-arbooles desde primero hasta el ultimo
-salida A-B-C
-public void preorden() {
-    imprimir(dato);
-    if (tieneHijoIzquierdo)
-        hijoIzquierdo.preorden();
-    if (tieneHijoDerecho)
-        hijoDerecho.preorden();
-}
-salida A-B-C
-    
-INORDEN:se recorren primero todos los sub-arboles izquierdo recien al fianal se procesa la raiz
-public void inorden() {
-    if (tieneHijoIzquierdo)
-        hijoIzquierdo.inorden();
-    imprimir(dato);
-    if (tieneHijoDerecho)
-        hijoDerecho.inorden();
-}
-salida B-A-C
 
-POSORDEN: se procesa primero tosos los sub-arboles luego la raiz  
-public void posorden() {
-    if (tieneHijoIzquierdo)
-        hijoIzquierdo.posorden();
-    if (tieneHijoDerecho)
-        hijoDerecho.posorden();
-    imprimir(dato);
-}
-salida B-C-A
-generales solo por niveles 
+En los árboles generales, los recorridos en profundidad son:
+**Preorden**: se procesa primero el nodo raíz y luego se recorren recursivamente todos sus hijos, en el orden en que aparecen.
+  Ejemplo: Para un árbol con raíz A y tres hijos B, C y D, la salida sería A-B-C-D.
+**Postorden**: primero se recorren recursivamente todos los hijos del nodo y recién al final se procesa la raíz.
+  Ejemplo: Para el mismo árbol, la salida sería B-C-D-A.
+A diferencia de los árboles binarios, en los árboles generales no existe el recorrido **inorden**, ya que no hay una noción de hijo izquierdo y derecho. En su lugar, solo se aplican recorridos como preorden y postorden, y el orden de los hijos depende de cómo estén organizados internamente.
+**Por niveles**: aunque no es un recorrido en profundidad, también se utiliza frecuentemente. Se procesan los nodos del árbol nivel por nivel, de arriba hacia abajo y de izquierda a derecha. Para implementarlo se utiliza una cola (queue): se encola primero la raíz, y luego a medida que se desencolan los nodos, se encolan sus hijos en orden. De este modo, todos los nodos de un mismo nivel se procesan antes de pasar al siguiente.
 
 b) ¿Qué recorridos conoce para recorrer por niveles un árbol general? Explique brevemente.
 El recorrido por niveles de un árbol general visita todos los nodos de un mismo nivel antes de pasar al siguiente nivel. En otras palabras, se recorre el árbol horizontalmente, de arriba abajo, nivel por nivel. Este tipo de recorrido utiliza una cola (queue) para almacenar los nodos a visitar, lo que le permite procesar los nodos en el orden en que se encuentran en cada nivel.
@@ -44,7 +19,6 @@ a.  Desencolar (dequeue) un nodo.
 b.  Procesar el nodo (por ejemplo, imprimir su valor o realizar alguna operación).
 c.  Encolar todos los hijos del nodo desencolado.
 
-
 c) ¿Existe alguna diferencia entre los recorridos preorden, postorden, inorden para recorrer los árboles generales respecto de los árboles binarios? Justifique su respuesta.
 Sí, existen diferencias, principalmente en el recorrido inorden.
 **PREORDEN y POSORDEN Estos recorridos son aplicables tanto a árboles generales como a binarios sin mayores diferencias conceptuales.
@@ -53,7 +27,8 @@ Sí, existen diferencias, principalmente en el recorrido inorden.
 **INORDEN: La diferencia crucial radica en el recorrido inorden. Este recorrido está definido específicamente para árboles binarios, donde un nodo tiene un hijo izquierdo y uno derecho. La secuencia es: visitar el subárbol izquierdo, luego la raíz, y finalmente el subárbol derecho. En un *árbol general*, un nodo puede tener múltiples hijos, por lo que no existe una noción inherente de "hijo izquierdo" y "hijo derecho", lo que hace que el concepto de recorrido inorden no sea directamente aplicable
 
 d) ¿Existe alguna noción de orden entre los elementos de un árbol general? Justifique su respuesta.
-
+No, en un árbol general no hay un orden inherente entre sus elementos. A diferencia de los árboles binarios de búsqueda (donde el hijo izquierdo es menor y el hijo derecho es mayor que el nodo padre), en un árbol general los hijos son simplemente una colección de nodos sin orden relativo. Por lo tanto, cualquier orden entre los elementos debe ser definido por el programador, no está implícito en la estructura.
 
 e) En un árbol general se define el grado de un nodo como el número de hijos de ese nodo y el grado del árbol como el máximo de los grados de los nodos del árbol.
 ¿Qué relación encuentra entre los Árboles Binarios sin tener en cuenta la implementación? Justifique su respuesta.
+Un árbol binario es un caso particular de árbol general en el que el grado máximo de un nodo es 2. Es decir, cada nodo puede tener como máximo dos hijos (uno izquierdo y uno derecho). Por lo tanto, si analizamos un árbol binario desde la perspectiva de un árbol general, su grado está acotado a 2, lo cual lo convierte en un subtipo de árbol general.
