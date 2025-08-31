@@ -9,7 +9,7 @@ import com.example.tp01_list.ejercicio2.ListaGenerica;
 import com.example.tp02_arb_gen.ArbolGeneral;
 import com.example.tp02_arb_gen.RecorridosAG;
 
-public class TestRecArbGen {
+public class TestRecArbGenEjer3 {
     @Test
     public void testNumerosImparesMayoresQuePreOrden() {
         ArbolGeneral<Integer> raiz = new ArbolGeneral<>(20);
