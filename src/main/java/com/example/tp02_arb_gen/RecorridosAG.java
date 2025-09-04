@@ -33,53 +33,41 @@ public class RecorridosAG {
     }
 
     public ListaGenerica<Integer> numerosImparesMayoresQueInOrden(ArbolGeneral<Integer> a, Integer n) {
-        /*
-         * Método que retorna una lista con los elementos impares del árbol “a” que sean
-         * mayores al valor “n” pasados como parámetros, recorrido en inorden.
-         * Solo válido si el árbol tiene como máximo 2 hijos (pseudo binario).
-         * public void inorden() {
-         * if (tieneHijoIzquierdo)
-         * hijoIzquierdo.inorden();
-         * imprimir(dato);
-         * if (tieneHijoDerecho)
-         * hijoDerecho.inorden();
-         * }
-         */
-        ListaGenerica<Integer> lista = new ListaEnlazadaGenerica<>();
+        ListaGenerica<Integer> res = new ListaEnlazadaGenerica<>();
+        if (a == null)
+            return res;
 
-        if (a != null) {
-            if (a.tieneHijos()) {
-                ListaGenerica<ArbolGeneral<Integer>> hijos = a.getHijos();
-                if (hijos.tamanio() > 0) {
-                    // usar índice 1 para el primer elemento (izquierdo)
-                    ArbolGeneral<Integer> hijoIzquierdo = hijos.elemento(1);
-                    ListaGenerica<Integer> listaIzq = numerosImparesMayoresQueInOrden(hijoIzquierdo, n);
-                    listaIzq.comenzar();
-                    while (!listaIzq.fin()) {
-                        lista.agregarFinal(listaIzq.proximo());
-                    }
-                }
+        if (a.tieneHijos()) {
+            // Procesar primer hijo
+            ListaGenerica<ArbolGeneral<Integer>> hijos = a.getHijos();
+            hijos.comenzar();
+            ListaGenerica<Integer> lPrimero = numerosImparesMayoresQueInOrden(hijos.proximo(), n);
+            lPrimero.comenzar();
+            while (!lPrimero.fin()) {
+                res.agregarFinal(lPrimero.proximo());
             }
+        }
 
-            if (a.getDato() % 2 != 0 && a.getDato() > n) {
-                lista.agregarFinal(a.getDato());
-            }
+        // Procesar nodo actual
+        if (a.getDato() % 2 != 0 && a.getDato() > n) {
+            res.agregarFinal(a.getDato());
+        }
 
-            if (a.tieneHijos()) {
-                ListaGenerica<ArbolGeneral<Integer>> hijos = a.getHijos();
-                if (hijos.tamanio() > 1) {
-                    // usar índice 2 para el segundo elemento (derecho)
-                    ArbolGeneral<Integer> hijoDerecho = hijos.elemento(2);
-                    ListaGenerica<Integer> listaDer = numerosImparesMayoresQueInOrden(hijoDerecho, n);
-                    listaDer.comenzar();
-                    while (!listaDer.fin()) {
-                        lista.agregarFinal(listaDer.proximo());
-                    }
+        if (a.tieneHijos()) {
+            // Procesar resto de hijos
+            ListaGenerica<ArbolGeneral<Integer>> hijos = a.getHijos();
+            hijos.comenzar();
+            hijos.proximo(); // Saltamos el primer hijo que ya procesamos
+            while (!hijos.fin()) {
+                ListaGenerica<Integer> lResto = numerosImparesMayoresQueInOrden(hijos.proximo(), n);
+                lResto.comenzar();
+                while (!lResto.fin()) {
+                    res.agregarFinal(lResto.proximo());
                 }
             }
         }
 
-        return lista;
+        return res;
     }
 
     public ListaGenerica<Integer> numerosImparesMayoresQuePostOrden(ArbolGeneral<Integer> a, Integer n) {

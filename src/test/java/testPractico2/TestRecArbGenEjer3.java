@@ -61,6 +61,7 @@ public class TestRecArbGenEjer3 {
         ArbolGeneral<Integer> hijoIzq = new ArbolGeneral<>(11);
         hijoIzq.agregarHijo(new ArbolGeneral<>(7));
         hijoIzq.agregarHijo(new ArbolGeneral<>(15));
+
         // Subárbol derecho
         ArbolGeneral<Integer> hijoDer = new ArbolGeneral<>(31);
         hijoDer.agregarHijo(new ArbolGeneral<>(25));
@@ -71,6 +72,11 @@ public class TestRecArbGenEjer3 {
 
         // Agregamos 35 (con sus hijos) al nodo 30
         hijoDer.agregarHijo(nodo35);
+        ArbolGeneral<Integer> tercerHijonodoDer = new ArbolGeneral<>(31);
+        tercerHijonodoDer.agregarHijo(new ArbolGeneral<>(23));
+        tercerHijonodoDer.agregarHijo(new ArbolGeneral<>(27));
+        hijoDer.agregarHijo(tercerHijonodoDer);
+
         // Finalmente, agregamos los hijos izquierdo y derecho a la raíz
         raiz.agregarHijo(hijoIzq);
         raiz.agregarHijo(hijoDer);
@@ -89,6 +95,10 @@ public class TestRecArbGenEjer3 {
         esperado.agregarFinal(31);
         esperado.agregarFinal(41);
         esperado.agregarFinal(35);
+        esperado.agregarFinal(13);
+        esperado.agregarFinal(23);
+        esperado.agregarFinal(27);
+
         assertEquals(esperado.tamanio(), resultado.tamanio());
 
         esperado.comenzar();
