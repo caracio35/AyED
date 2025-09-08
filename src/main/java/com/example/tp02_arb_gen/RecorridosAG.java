@@ -2,6 +2,7 @@ package com.example.tp02_arb_gen;
 
 import com.example.tp01_list.ejercicio2.ListaEnlazadaGenerica;
 import com.example.tp01_list.ejercicio2.ListaGenerica;
+import com.example.tp01_list.ejercicio3.ColaGenerica;
 
 public class RecorridosAG {
 
@@ -47,14 +48,11 @@ public class RecorridosAG {
                 res.agregarFinal(lPrimero.proximo());
             }
         }
-
-        // Procesar nodo actual
         if (a.getDato() % 2 != 0 && a.getDato() > n) {
             res.agregarFinal(a.getDato());
         }
 
         if (a.tieneHijos()) {
-            // Procesar resto de hijos
             ListaGenerica<ArbolGeneral<Integer>> hijos = a.getHijos();
             hijos.comenzar();
             hijos.proximo(); // Saltamos el primer hijo que ya procesamos
@@ -124,7 +122,32 @@ public class RecorridosAG {
          * }
          * }
          */
-        return null;
+        ListaGenerica<Integer> resultado = new ListaEnlazadaGenerica<>();
+        if (a.esVacio())
+            return resultado;
+
+        ColaGenerica<ArbolGeneral<Integer>> cola = new ColaGenerica<>();
+        cola.encolar(a);
+
+        while (!cola.esVacia()) {
+            ArbolGeneral<Integer> nodo = cola.desencolar();
+
+            // Procesar el nodo actual
+            if (nodo.getDato() % 2 != 0 && nodo.getDato() > n) {
+                resultado.agregarFinal(nodo.getDato());
+            }
+
+            // Encolar todos los hijos
+            if (nodo.tieneHijos()) {
+                ListaGenerica<ArbolGeneral<Integer>> hijos = nodo.getHijos();
+                hijos.comenzar();
+                while (!hijos.fin()) {
+                    cola.encolar(hijos.proximo());
+                }
+            }
+        }
+
+        return resultado;
     }
 
 }
