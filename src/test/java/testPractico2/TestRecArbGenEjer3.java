@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import com.example.tp01_list.ejercicio2.ListaEnlazadaGenerica;
 import com.example.tp01_list.ejercicio2.ListaGenerica;
+import com.example.tp01_list.objetos.AreaEmpresa;
+import com.example.tp02_arb_gen.AnalizadorArbol;
 import com.example.tp02_arb_gen.ArbolGeneral;
 import com.example.tp02_arb_gen.RecorridosAG;
 
@@ -201,4 +203,28 @@ public class TestRecArbGenEjer3 {
         }
     }
 
+    @Test
+    public void testDevolverMaximoPromedio() {
+        ArbolGeneral<AreaEmpresa> raiz = new ArbolGeneral<>(new AreaEmpresa("m", 14));
+        ArbolGeneral<AreaEmpresa> hijoJ = new ArbolGeneral<>(new AreaEmpresa("j", 13));
+        ArbolGeneral<AreaEmpresa> hijok = new ArbolGeneral<>(new AreaEmpresa("k", 25));
+        ArbolGeneral<AreaEmpresa> hijol = new ArbolGeneral<>(new AreaEmpresa("l", 10));
+        hijoJ.agregarHijo(new ArbolGeneral<>(new AreaEmpresa("a", 4)));
+        hijoJ.agregarHijo(new ArbolGeneral<>(new AreaEmpresa("b", 7)));
+        hijoJ.agregarHijo(new ArbolGeneral<>(new AreaEmpresa("c", 5)));
+        hijok.agregarHijo(new ArbolGeneral<>(new AreaEmpresa("d", 6)));
+        hijok.agregarHijo(new ArbolGeneral<>(new AreaEmpresa("e", 10)));
+        hijok.agregarHijo(new ArbolGeneral<>(new AreaEmpresa("f", 18)));
+        hijol.agregarHijo(new ArbolGeneral<>(new AreaEmpresa("g", 9)));
+        hijol.agregarHijo(new ArbolGeneral<>(new AreaEmpresa("h", 12)));
+        hijol.agregarHijo(new ArbolGeneral<>(new AreaEmpresa("i", 19)));
+
+        raiz.agregarHijo(hijoJ);
+        raiz.agregarHijo(hijok);
+        raiz.agregarHijo(hijol);
+        AnalizadorArbol analizador = new AnalizadorArbol();
+        int maximoPromedio = analizador.devolverMaximoPromedio(raiz);
+        assertEquals(16, maximoPromedio);
+
+    }
 }
