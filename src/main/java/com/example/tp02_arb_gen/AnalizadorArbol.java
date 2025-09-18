@@ -7,7 +7,7 @@ import com.example.tp01_list.objetos.AreaEmpresa;
 public class AnalizadorArbol {
 
     public int devolverMaximoPromedio(ArbolGeneral<AreaEmpresa> arbol) {
-        int maximoPromedio = -1; // Inicializamos con un valor bajo
+        int maximoPromedio = -1; // Inicializamos con un valor no valido
         ColaGenerica<ArbolGeneral<AreaEmpresa>> cola = new ColaGenerica<>();
         cola.encolar(arbol);
         cola.encolar(null); // Marcador de fin de nivel
@@ -30,7 +30,6 @@ public class AnalizadorArbol {
                     }
                 }
             } else {
-                // Fin de nivel
                 if (contadorNivel > 0) {
                     int promedioNivel = sumaNivel / contadorNivel;
                     if (promedioNivel > maximoPromedio) {
@@ -38,7 +37,6 @@ public class AnalizadorArbol {
                     }
                 }
 
-                // Si la cola no está vacía, significa que hay otro nivel
                 if (!cola.esVacia()) {
                     cola.encolar(null); // Agregamos un nuevo marcador de fin de nivel
                     sumaNivel = 0;
