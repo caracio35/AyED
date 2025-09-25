@@ -106,7 +106,6 @@ public class TestPractico3 {
         h.agregarHijoIzquierdo(p);
         h.agregarHijoDerecho(q);
 
-        // Probar recorrido entre niveles
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 

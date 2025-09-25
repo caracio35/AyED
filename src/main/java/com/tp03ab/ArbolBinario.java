@@ -1,7 +1,6 @@
 package com.tp03ab;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import com.example.tp01_list.ejercicio3.ColaGenerica;
 
 public class ArbolBinario<T> {
 	private T dato;
@@ -104,15 +103,15 @@ public class ArbolBinario<T> {
 		if (this.esVacio())
 			return;
 
-		Queue<ArbolBinario<T>> cola = new LinkedList<>();
-		Queue<ArbolBinario<T>> colaAux = new LinkedList<>();
+		ColaGenerica<ArbolBinario<T>> cola = new ColaGenerica<>();
+		ColaGenerica<ArbolBinario<T>> colaAux = new ColaGenerica<>();
 		int nivel = 0;
 
-		cola.add(this);
+		cola.encolar(this);
 
-		while (!cola.isEmpty() && nivel <= m) {
-			while (!cola.isEmpty()) {
-				ArbolBinario<T> nodo = cola.remove();
+		while (!cola.esVacia() && nivel <= m) {
+			while (!cola.esVacia()) {
+				ArbolBinario<T> nodo = cola.desencolar();
 
 				// Imprimir solo si estamos en el rango [n, m]
 				if (nivel >= n) {
@@ -121,18 +120,17 @@ public class ArbolBinario<T> {
 
 				// Encolar hijos si existen
 				if (nodo.tieneHijoIzquierdo()) {
-					colaAux.add(nodo.getHijoIzquierdo());
+					colaAux.encolar(nodo.getHijoIzquierdo());
 				}
 				if (nodo.tieneHijoDerecho()) {
-					colaAux.add(nodo.getHijoDerecho());
+					colaAux.encolar(nodo.getHijoDerecho());
 				}
 			}
 
-			// Avanzar de nivel
+			// Avanzar al siguiente nivel
 			cola = colaAux;
-			colaAux = new LinkedList<>();
+			colaAux = new ColaGenerica<>();
 			nivel++;
 		}
 	}
-
 }
