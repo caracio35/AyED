@@ -5,7 +5,7 @@ import java.io.PrintStream;
 
 import org.junit.jupiter.api.Test;
 
-import com.tp03ab.ArbolBinario;
+import com.example.tp03.tp03ab.ArbolBinario;
 
 public class TestPractico3 {
     @Test
