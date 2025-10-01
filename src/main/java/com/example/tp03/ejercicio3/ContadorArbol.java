@@ -12,7 +12,7 @@ public class ContadorArbol {
 
     // Make sure ListaEnlazadaGenerica is imported and exists in your project
     public ListaEnlazadaGenerica<Integer> numerosParesInorden()  {
-        private LisListaEnlazadaGenerica<Integer> resPares= new LisListaEnlazadaGenerica();   
+        ListaEnlazadaGenerica<Integer> resPares= new ListaEnlazadaGenerica();
      
      
         return new ListaEnlazadaGenerica<Integer>();
