@@ -68,33 +68,67 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
 	}
 
 	public void agregar(Comparable<T> dato) {
-		// TO DO
-
+		if (dato == null) {
+			throw new IllegalArgumentException("El dato a agregar no puede ser null");
+		}
+		if (this.esVacio()) {
+			this.setDato((T) dato);
+		} else {
+			this.agregar(dato, this);
+		}
 	}
 
 	private void agregar(Comparable<T> dato, ArbolBinarioDeBusqueda<T> arbol) {
-		// TO DO
-
+		int comparacion = dato.compareTo(arbol.getDato());
+		if (comparacion < 0) {
+			if (arbol.getHijoIzquierdo() == null) {
+				arbol.setHijoIzquierdo(new ArbolBinarioDeBusqueda<>((T) dato));
+			} else {
+				this.agregar(dato, arbol.getHijoIzquierdo());
+			}
+		} else if (comparacion > 0) {
+			if (arbol.getHijoDerecho() == null) {
+				arbol.setHijoDerecho(new ArbolBinarioDeBusqueda<>((T) dato));
+			} else {
+				this.agregar(dato, arbol.getHijoDerecho());
+			}
+		}
 	}
 
 	public ArbolBinarioDeBusqueda<T> buscarMayorDeLosMenores(ArbolBinarioDeBusqueda<T> arbol) {
-		// TO DO
-		return null;
+		if (arbol == null || arbol.getHijoIzquierdo() == null) {
+			return null;
+		}
+		return this.buscarMayor(arbol.getHijoIzquierdo());
 	}
 
 	public ArbolBinarioDeBusqueda<T> buscarMayor(ArbolBinarioDeBusqueda<T> arbol) {
-		// TO DO
-		return null;
+		if (arbol == null) {
+			return null;
+		}
+		ArbolBinarioDeBusqueda<T> actual = arbol;
+		while (actual.getHijoDerecho() != null) {
+			actual = actual.getHijoDerecho();
+		}
+		return actual;
 	}
 
 	public ArbolBinarioDeBusqueda<T> buscarMenorDeLosMayores(ArbolBinarioDeBusqueda<T> arbol) {
-		// TO DO
-		return null;
+		if (arbol == null || arbol.getHijoDerecho() == null) {
+			return null;
+		}
+		return this.buscarMenor(arbol.getHijoDerecho());
 	}
 
 	public ArbolBinarioDeBusqueda<T> buscarMenor(ArbolBinarioDeBusqueda<T> arbol) {
-		// TO DO
-		return null;
+		if (arbol == null) {
+			return null;
+		}
+		ArbolBinarioDeBusqueda<T> actual = arbol;
+		while (actual.getHijoIzquierdo() != null) {
+			actual = actual.getHijoIzquierdo();
+		}
+		return actual;
 	}
 
 	@Override

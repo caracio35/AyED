@@ -7,7 +7,10 @@ import java.io.PrintStream;
 
 import org.junit.jupiter.api.Test;
 
+import com.example.tp01_list.ejercicio2.ListaGenerica;
 import com.example.tp03.tp03ab.ArbolBinario;
+import com.example.tp03.tp03abb.ArbolBinarioDeBusqueda;
+import com.example.tp03.tp03abb.CaminoABB;
 
 public class TestPractico3 {
     @Test
@@ -115,4 +118,40 @@ public class TestPractico3 {
 
         assertEquals("D E F G H I J K L M N O ", outContent.toString());
     }
+
+    @Test
+    public void testCaminoRecorrido() {
+        /*
+         * Árbol de ejemplo:
+         *
+         * 100
+         * / \
+         * 20 130
+         * \
+         * 30
+         *
+         * Buscamos el valor 25.
+         * Camino esperado: [100, -20, 30]
+         */
+
+        ArbolBinarioDeBusqueda<Integer> abb = new ArbolBinarioDeBusqueda<>(100);
+
+        abb.agregar(20);
+        abb.agregar(130);
+        abb.agregar(30);
+
+        CaminoABB camino = new CaminoABB();
+        ListaGenerica<Integer> recorrido = camino.caminoRecorrido(abb, 25);
+
+        // Convertir lista a String para comparación
+        StringBuilder sb = new StringBuilder();
+        recorrido.comenzar();
+        while (!recorrido.fin()) {
+            sb.append(recorrido.proximo()).append(" ");
+        }
+
+        assertEquals("100 -20 30 ", sb.toString(),
+                "El camino esperado es [100, -20, 30]");
+    }
+
 }
