@@ -4,10 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import com.example.tp01_list.ejercicio2.ListaGenerica;
 import com.example.tp06.Arista;
+import com.example.tp06.Vertice;
 import com.example.tp06.implementacion.GrafoImplListAdy;
 import com.example.tp06.implementacion.VerticeImplListAdy;
 import com.example.tp06.recorridos.Recorridos;
@@ -86,18 +90,33 @@ public class TestGrafos {
         Recorridos<String> recorridos = new Recorridos<>();
 
         ListaGenerica<String> dfs = recorridos.dfs(grafo);
-        ListaGenerica<String> bfs = recorridos.bfs(grafo);
+        ListaGenerica<Vertice<String>> bfs = recorridos.bfs(grafo);
 
-        System.out.print("DFS: ");
-        dfs.comenzar();
-        while (!dfs.fin())
-            System.out.print(dfs.proximo() + " ");
-        System.out.println();
+        assertEquals(List.of("A", "B", "D", "C"), toDatoList(dfs));
+        assertEquals(List.of("A", "B", "C", "D"), toDatoListFromVertices(bfs));
+    }
 
-        System.out.print("BFS: ");
-        bfs.comenzar();
-        while (!bfs.fin())
-            System.out.print(bfs.proximo() + " ");
-        System.out.println();
+    private List<String> toDatoList(ListaGenerica<String> lista) {
+        List<String> datos = new ArrayList<>();
+        if (lista == null) {
+            return datos;
+        }
+        lista.comenzar();
+        while (!lista.fin()) {
+            datos.add(lista.proximo());
+        }
+        return datos;
+    }
+
+    private List<String> toDatoListFromVertices(ListaGenerica<Vertice<String>> lista) {
+        List<String> datos = new ArrayList<>();
+        if (lista == null) {
+            return datos;
+        }
+        lista.comenzar();
+        while (!lista.fin()) {
+            datos.add(lista.proximo().dato());
+        }
+        return datos;
     }
 }

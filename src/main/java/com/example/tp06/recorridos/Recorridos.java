@@ -49,17 +49,18 @@ public class Recorridos<T> {
         ListaGenerica<Vertice<T>> retorno = new ListaEnlazadaGenerica<>();
         ListaGenerica<Vertice<T>> vertices = grafo.listaDeVertices();
         vertices.comenzar();
-        adyasentes.encolar(vertices.proximo());
-        visitado.agregarFinal(vertices.proximo());
+        Vertice<T> primera = vertices.proximo();
+        adyasentes.encolar(primera);
+        visitado.agregarFinal(primera);
 
         while (!adyasentes.esVacia()) {
             Vertice<T> vAux = adyasentes.desencolar();
             retorno.agregarFinal(vAux);
             ListaGenerica<Arista<T>> ady = grafo.listaDeAdyacentes(vAux);
             ady.comenzar();
-            while (!ady.esVacia()) {
+            while (!ady.fin()) {
                 Vertice<T> vDestino = ady.proximo().verticeDestino();
-                if (visitado.incluye(vDestino)) {
+                if (!visitado.incluye(vDestino)) {
                     adyasentes.encolar(vDestino);
                     visitado.agregarFinal(vDestino);
                 }
