@@ -42,21 +42,30 @@ public class Recorridos<T> {
     }
 
     // 🔹 Recorrido en amplitud (BFS)
-    public ListaGenerica<T> bfs(Grafo<T> grafo) {
+    public ListaGenerica<Vertice<T>> bfs(Grafo<T> grafo) {
         ListaGenerica<T> resultado = new ListaEnlazadaGenerica<>();
-        boolean[] visitado = new boolean[grafo.listaDeVertices().tamanio() + 1];
-        ColaGenerica<Vertice<T>> cola = new ColaGenerica<>();
-
+        ListaGenerica<Vertice<T>> visitado = new ListaEnlazadaGenerica<>();
+        ColaGenerica<Vertice<T>> adyasentes = new ColaGenerica<>();
+        ListaGenerica<Vertice<T>> retorno = new ListaEnlazadaGenerica<>();
         ListaGenerica<Vertice<T>> vertices = grafo.listaDeVertices();
         vertices.comenzar();
+        adyasentes.encolar(vertices.proximo());
+        visitado.agregarFinal(vertices.proximo());
 
-        while (!vertices.fin()) {
-            Vertice<T> v = vertices.proximo();
-            if (!visitado[v.getPosicion()]) {
-                bfsDesde(grafo, v, visitado, resultado, cola);
+        while (!adyasentes.esVacia()) {
+            Vertice<T> vAux = adyasentes.desencolar();
+            retorno.agregarFinal(vAux);
+            ListaGenerica<Arista<T>> ady = grafo.listaDeAdyacentes(vAux);
+            ady.comenzar();
+            while (!ady.esVacia()) {
+                Vertice<T> vDestino = ady.proximo().verticeDestino();
+                if (visitado.incluye(vDestino)) {
+                    adyasentes.encolar(vDestino);
+                    visitado.agregarFinal(vDestino);
+                }
             }
         }
-        return resultado;
+        return retorno;
     }
 
     private void bfsDesde(Grafo<T> grafo, Vertice<T> v, boolean[] visitado,
